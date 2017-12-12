@@ -1,0 +1,50 @@
+name: pixelsort
+version: 0.0.1
+author: Raoul Harel
+about: Applies a pixel sorting effect to an image.
+args:
+    - INPUT:
+        help: Sets the input image file.
+        required: true
+    - output:
+        default_value: ./output.png
+        help: Sets the output file path.
+        long: output
+        short: o
+    - comparison_component:
+        default_value: Red
+        help: Sets the color component to sort by.
+        long: compare
+        possible_values: [Red, Green, Blue, Hue, Saturation, Lightness, Value]
+        short: c
+    - sorting_dimension:
+        default_value: Row
+        help: Sets the sorting dimension.
+        long: dimension
+        possible_values: [Row, Column]
+        short: d
+    - affect_hsl:
+        conflicts_with: [affect_hsv, affect_rgb]
+        help: Sets the components to be affected in HSL space.
+        long: affect-hsl
+        max_values: 3
+        min_values: 1
+        possible_values: [Hue, Saturation, Lightness]
+    - affect_hsv:
+        conflicts_with: [affect_hsl, affect_rgb]
+        help: Sets the components to be affected in HSV space.
+        long: affect-hsv
+        max_values: 3
+        min_values: 1
+        possible_values: [Hue, Saturation, Value]
+    - affect_rgb:
+        conflicts_with: [affect_hsl, affect_hsv]
+        help: Sets the components to be affected in RGB space.
+        long: affect-rgb
+        max_values: 3
+        min_values: 1
+        possible_values: [Red, Green, Blue]
+    - verbose:
+        help: Sets program verbosity level.
+        long: verbose
+        short: v
